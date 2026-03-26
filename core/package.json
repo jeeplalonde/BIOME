@@ -5,8 +5,13 @@
   "type": "module",
   "exports": {
     "./enr": "./enr/types/index.ts",
+    "./enr/services": "./enr/services/index.ts",
+    "./enr/hooks": "./enr/hooks/index.ts",
     "./audit": "./audit/types/index.ts",
+    "./audit/services": "./audit/services/index.ts",
+    "./auth": "./auth/index.ts",
     "./supabase": "./supabase/client.ts",
+    "./supabase/types": "./supabase/types.gen.ts",
     "./ui/primitives": "./ui/primitives/index.ts",
     "./ui/canopy": "./ui/canopy/index.ts",
     "./ui/daylight": "./ui/daylight/index.ts"
