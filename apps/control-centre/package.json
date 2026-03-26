@@ -1,0 +1,9 @@
+{
+  "name": "@biome/control-centre",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@biome/core": "*"
+  }
+}
