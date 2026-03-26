@@ -80,3 +80,9 @@ Subtitle: "8 conversations that shape everything you build"
 - Final button on template 8: "View your story" (not "View summary")
 - Navigation: Previous / Next buttons, step indicator "3 of 8"
 - Responsive and mobile-friendly
+
+## Session Conventions
+
+- Change reports go in `docs/change-reports/` as `change-report-YYYY-MM-DD.json`
+- Generate a change report at the end of every build session
+- Reports track milestones, commits, infrastructure changes, and next steps
