@@ -1,0 +1,349 @@
+{
+  "change_report": {
+    "date": "2026-03-26",
+    "session_id": "biome-build-session-001",
+    "author": "JP (Jean-Paul Lalonde) + Wren (Claude Opus 4.6)",
+    "summary": "Initial build of Manifest AI Discovery App (M1-M3), cross-database standardization of all 3 BIOME Supabase projects, and new BIOME Engine Monitor app with AI-powered capability advisors.",
+
+    "applications": {
+      "created": [
+        {
+          "name": "Manifest AI Discovery App",
+          "path": "/home/jonpaul/manifest-app",
+          "purpose": "Client intake layer for Manifest AI — 8 discovery templates that produce SSOT Field nodes",
+          "stack": {
+            "frontend": "React 18 + TypeScript + Vite 8 + Tailwind CSS 4",
+            "backend": "Supabase (Manifest AI project)",
+            "auth": "Supabase Anonymous Auth",
+            "design_system": "Solarpunk Daylight"
+          },
+          "milestones_completed": [
+            {
+              "id": "M1",
+              "name": "Project Scaffold",
+              "description": "Vite + React 18 + TypeScript + Tailwind CSS running locally with Solarpunk design tokens"
+            },
+            {
+              "id": "M2",
+              "name": "8 Discovery Templates",
+              "description": "All 8 templates with 25 fields, local React state, navigation, progress tracking per template and overall"
+            },
+            {
+              "id": "M3",
+              "name": "Supabase Persistence",
+              "description": "Anonymous auth, auto-create project entity, debounced auto-save of field_nodes, data survives page refresh"
+            }
+          ],
+          "source_files": [
+            "src/App.tsx — BrowserRouter with DiscoveryProvider wrapping HomePage and TemplatePage routes",
+            "src/main.tsx — React 18 entry point",
+            "src/index.css — Tailwind v4 with full Solarpunk @theme tokens",
+            "src/data/templates.ts — 8 templates, 25 fields with keys, labels, and conversational hints",
+            "src/context/DiscoveryContext.tsx — React context holding all field values, debounced Supabase persistence",
+            "src/components/FieldInput.tsx — Textarea with accent-colored focus ring and filled-state label",
+            "src/pages/HomePage.tsx — Template grid with per-template and overall progress bars, loading/error states",
+            "src/pages/TemplatePage.tsx — Full template form with prev/next navigation and save indicator",
+            "src/lib/supabase.ts — Supabase client configured from VITE_ env vars",
+            "src/lib/persistence.ts — ensureAuth, loadOrCreateProject, loadFields, saveField functions"
+          ],
+          "config_files": [
+            ".env — VITE_SUPABASE_MANIFEST_URL, VITE_SUPABASE_MANIFEST_ANON_KEY",
+            ".gitignore — updated to exclude .env",
+            "vite.config.ts — React + Tailwind plugins"
+          ],
+          "dependencies_added": [
+            "react-router-dom",
+            "@supabase/supabase-js",
+            "tailwindcss",
+            "@tailwindcss/vite"
+          ]
+        },
+        {
+          "name": "BIOME Engine Monitor",
+          "path": "/home/jonpaul/biome-engine-monitor",
+          "purpose": "Infrastructure health monitoring dashboard across all BIOME Supabase projects with educational context and AI-powered capability advisors",
+          "stack": {
+            "frontend": "React 18 + TypeScript + Vite 8 + Tailwind CSS 4",
+            "backend": "Supabase Edge Function (capability-advisor) on Manifest AI project",
+            "ai": "Claude Haiku 4.5 via Anthropic API (proxied through Edge Function)",
+            "design_system": "Solarpunk Daylight + Nightfall (dark mode)"
+          },
+          "capabilities_monitored": [
+            {
+              "id": "rls_coverage",
+              "name": "Row Level Security Coverage",
+              "category": "security",
+              "metric": "Percentage of tables with RLS enabled"
+            },
+            {
+              "id": "rls_policy_count",
+              "name": "RLS Policy Completeness",
+              "category": "security",
+              "metric": "Tables with RLS enabled that have at least one policy"
+            },
+            {
+              "id": "audit_log_standard",
+              "name": "Audit Log Compliance",
+              "category": "data",
+              "metric": "Presence of BIOME-standard audit_log table"
+            },
+            {
+              "id": "updated_at_triggers",
+              "name": "Automatic Timestamp Triggers",
+              "category": "data",
+              "metric": "Percentage of tables with updated_at that have a trigger"
+            },
+            {
+              "id": "database_health",
+              "name": "Database Connection",
+              "category": "reliability",
+              "metric": "Can execute SELECT 1 successfully"
+            },
+            {
+              "id": "table_count",
+              "name": "Schema Size",
+              "category": "reliability",
+              "metric": "Count of tables in public schema"
+            },
+            {
+              "id": "total_rows",
+              "name": "Data Volume",
+              "category": "reliability",
+              "metric": "Total estimated rows across all public tables"
+            },
+            {
+              "id": "uuid_standard",
+              "name": "UUID Generation Standard",
+              "category": "standards",
+              "metric": "All UUID defaults use gen_random_uuid()"
+            },
+            {
+              "id": "biome_function_standard",
+              "name": "BIOME Shared Functions",
+              "category": "standards",
+              "metric": "Presence of set_updated_at() function"
+            }
+          ],
+          "features": [
+            "Live health checks across 3 Supabase projects via biome_health_check() RPC",
+            "Project summary cards with table count, row count, RLS coverage",
+            "9 capability cards grouped by category (Security, Data Integrity, Reliability, BIOME Standards)",
+            "Expandable educational context per capability: What is this?, Why it matters, Industry standard",
+            "AI-powered Section Chat per capability with contextual starter prompts and live health data",
+            "Dark mode toggle (Solarpunk Nightfall) with localStorage persistence",
+            "Refresh button to re-run all health checks"
+          ],
+          "source_files": [
+            "src/App.tsx — Main dashboard with health checks, dark mode toggle, category sections",
+            "src/main.tsx — React 18 entry point",
+            "src/index.css — Tailwind v4 with Solarpunk Daylight + Nightfall dark mode overrides",
+            "src/data/capabilities.ts — 9 capability definitions with descriptions, industry standards, evaluate functions",
+            "src/lib/supabase.ts — 3 Supabase clients (Manifest AI, BIOME Website, MyMantra)",
+            "src/lib/healthCheck.ts — fetchHealthCheck and fetchAllHealthChecks via RPC",
+            "src/components/CapabilityCard.tsx — Expandable card with health values, educational context, and SectionChat",
+            "src/components/SectionChat.tsx — Per-capability AI chat with starter prompts and conversation history",
+            "src/components/ProjectSummary.tsx — Project card with table/row/RLS summary",
+            "src/components/StatusBadge.tsx — Health status badge (healthy/warning/critical/unknown)"
+          ],
+          "config_files": [
+            ".env — VITE_SUPABASE_MANIFEST_ANON_KEY, VITE_SUPABASE_WEBSITE_ANON_KEY, VITE_SUPABASE_MYMANTRA_ANON_KEY",
+            ".gitignore — updated to exclude .env",
+            "vite.config.ts — React + Tailwind plugins"
+          ],
+          "dependencies_added": [
+            "@supabase/supabase-js",
+            "tailwindcss",
+            "@tailwindcss/vite"
+          ]
+        }
+      ]
+    },
+
+    "database_changes": {
+      "cross_project_standardization": {
+        "description": "Aligned all 3 BIOME Supabase projects to common infrastructure standards",
+        "standards_applied": [
+          "UUID generation: gen_random_uuid() everywhere (native Postgres, no extension)",
+          "Audit log pattern: generic entity_id + entity_type + action (CHECK) + actor_id (UUID → auth.users) + before_data/after_data (JSONB) + reason",
+          "Timestamp naming: created_at and updated_at consistently",
+          "updated_at trigger: set_updated_at() BEFORE UPDATE function on all tables with updated_at",
+          "RLS: enabled on all tables across all projects"
+        ]
+      },
+      "projects": [
+        {
+          "name": "Manifest AI",
+          "supabase_id": "jslzcnurnyucfiigyrtj",
+          "region": "ca-central-1",
+          "migrations_applied": [
+            {
+              "version": "20260326182243",
+              "name": "standardize_uuid_and_add_updated_at_trigger",
+              "changes": [
+                "Created set_updated_at() trigger function",
+                "Changed UUID defaults from extensions.uuid_generate_v4() to gen_random_uuid() on: entity_nodes, field_nodes, edges, canvas_chains, canvas_steps, audit_log",
+                "Added BEFORE UPDATE triggers on: entity_nodes, field_nodes, canvas_chains"
+              ]
+            },
+            {
+              "version": "20260326182929",
+              "name": "add_field_nodes_update_policy_and_upsert_constraint",
+              "changes": [
+                "Added RLS UPDATE policy on field_nodes (was missing — could insert but not update)",
+                "Added UNIQUE constraint on field_nodes(entity_id, key) for safe upsert"
+              ]
+            },
+            {
+              "version": "20260326184204",
+              "name": "add_biome_health_check_function",
+              "changes": [
+                "Created biome_health_check() SECURITY DEFINER function returning JSONB health metrics",
+                "Granted EXECUTE to anon role for browser RPC access"
+              ]
+            }
+          ],
+          "edge_functions_deployed": [
+            {
+              "name": "capability-advisor",
+              "id": "1b778f0d-d7c5-4ef4-bcbc-6c0ba60245b1",
+              "version": 1,
+              "status": "ACTIVE",
+              "verify_jwt": false,
+              "purpose": "Claude API proxy for per-capability AI advisor chats in BIOME Engine Monitor",
+              "model": "claude-haiku-4-5-20251001",
+              "pending_secret": "ANTHROPIC_API_KEY — must be added via Supabase Dashboard → Edge Functions → Secrets"
+            }
+          ]
+        },
+        {
+          "name": "BIOME Website",
+          "supabase_id": "oqxuczoaouebbpiacvpk",
+          "region": "ca-central-1",
+          "migrations_applied": [
+            {
+              "version": "20260326182302",
+              "name": "standardize_audit_log_and_add_updated_at_trigger",
+              "changes": [
+                "Created set_updated_at() trigger function",
+                "Dropped old scoped audit_log (submission_id FK, actor TEXT, occurred_at)",
+                "Created new BIOME-standard audit_log (entity_id, entity_type, action CHECK, actor_id UUID → auth.users, before_data/after_data JSONB, reason, created_at)",
+                "Enabled RLS on new audit_log",
+                "Added BEFORE UPDATE trigger on submissions"
+              ]
+            },
+            {
+              "version": "20260326184223",
+              "name": "add_biome_health_check_function",
+              "changes": [
+                "Created biome_health_check() SECURITY DEFINER function",
+                "Granted EXECUTE to anon role"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "MyMantra",
+          "supabase_id": "xyckbtgidlvrihcpxhpr",
+          "region": "us-east-2",
+          "migrations_applied": [
+            {
+              "version": "20260326182321",
+              "name": "add_audit_log_and_updated_at_triggers",
+              "changes": [
+                "Created set_updated_at() trigger function",
+                "Created BIOME-standard audit_log table with RLS enabled",
+                "Added BEFORE UPDATE triggers on: beliefs, profiles, user_beliefs, synthesis_statements"
+              ]
+            },
+            {
+              "version": "20260326184325",
+              "name": "add_biome_health_check_function",
+              "changes": [
+                "Created biome_health_check() SECURITY DEFINER function",
+                "Granted EXECUTE to anon role"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    "health_check_results": {
+      "timestamp": "2026-03-26T18:43:00Z",
+      "projects": {
+        "manifest_ai": {
+          "database_health": true,
+          "table_count": 6,
+          "total_rows": 0,
+          "rls_coverage": "100%",
+          "rls_policy_count": "67%",
+          "audit_log_standard": true,
+          "updated_at_triggers": "100%",
+          "uuid_standard": true,
+          "biome_function_standard": true
+        },
+        "biome_website": {
+          "database_health": true,
+          "table_count": 4,
+          "total_rows": 1,
+          "rls_coverage": "100%",
+          "rls_policy_count": "75%",
+          "audit_log_standard": true,
+          "updated_at_triggers": "100%",
+          "uuid_standard": true,
+          "biome_function_standard": true
+        },
+        "mymantra": {
+          "database_health": true,
+          "table_count": 7,
+          "total_rows": 30,
+          "rls_coverage": "100%",
+          "rls_policy_count": "86%",
+          "audit_log_standard": true,
+          "updated_at_triggers": "100%",
+          "uuid_standard": true,
+          "biome_function_standard": true
+        }
+      }
+    },
+
+    "pending_actions": [
+      {
+        "priority": "required",
+        "action": "Enable Anonymous Sign-ins on Manifest AI",
+        "location": "Supabase Dashboard → Manifest AI → Authentication → Providers → Anonymous Sign-ins → ON",
+        "reason": "Manifest Discovery App uses anonymous auth for persistence without requiring user login"
+      },
+      {
+        "priority": "required",
+        "action": "Add ANTHROPIC_API_KEY secret to capability-advisor Edge Function",
+        "location": "Supabase Dashboard → Manifest AI → Edge Functions → capability-advisor → Secrets",
+        "reason": "Powers the AI capability advisors in BIOME Engine Monitor"
+      },
+      {
+        "priority": "informational",
+        "action": "RLS Policy Completeness is below 100% on all projects",
+        "detail": "Manifest AI: 67%, BIOME Website: 75%, MyMantra: 86%. Some tables with RLS enabled may be missing INSERT/UPDATE/DELETE policies. This is a warning, not critical — the tables are locked down (RLS ON = deny by default), but some operations may silently fail."
+      }
+    ],
+
+    "architecture_decisions": [
+      {
+        "decision": "Anonymous auth for Manifest Discovery App",
+        "rationale": "Removes login friction for discovery intake. Each browser gets a persistent Supabase identity. Can be upgraded to email/OAuth later without data migration."
+      },
+      {
+        "decision": "biome_health_check() as SECURITY DEFINER database function",
+        "rationale": "Allows anon-key browser calls to query pg_catalog and information_schema. Function runs with definer privileges, not caller privileges. Avoids needing service role keys in the browser."
+      },
+      {
+        "decision": "Edge Function proxy for Claude API",
+        "rationale": "Keeps ANTHROPIC_API_KEY server-side as a Supabase secret. Browser never sees the key. verify_jwt disabled because the monitor is an internal tool — can be tightened later."
+      },
+      {
+        "decision": "Claude Haiku 4.5 for capability advisors",
+        "rationale": "Fast responses (~1s), low cost, sufficient quality for explanatory Q&A. Upgrade to Sonnet if deeper analysis is needed."
+      }
+    ]
+  }
+}
