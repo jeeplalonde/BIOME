@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* --- BIOME Daylight Design System (Client-Facing) --- */
+
+@theme {
+  --color-forest-50: #eaf5ec;
+  --color-forest-100: #d0e8d4;
+  --color-forest-200: #a3d1ab;
+  --color-forest-300: #6fb87a;
+  --color-forest-400: #3d8a48;
+  --color-forest-500: #2f6e38;
+  --color-forest-600: #2a5430;
+  --color-forest-700: #1e3d22;
+  --color-forest-800: #152b18;
+  --color-forest-900: #0d1a0f;
+
+  --color-gold-300: #E4BF7A;
+  --color-gold-400: #CF9F4A;
+  --color-gold-500: #B8872E;
+
+  --color-soil-50: #f8f5f0;
+  --color-soil-100: #ece6e0;
+  --color-soil-200: #d9d0c6;
+  --color-soil-300: #b8aa9a;
+
+  --color-ink: #0f1811;
+  --color-ink-light: #3a4a3d;
+  --color-ink-muted: #6b7c6e;
+  --color-prestige: #0A0A0A;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-soil-50);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-sans);
+  color: var(--color-forest-700);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+::selection {
+  background-color: var(--color-forest-100);
+  color: var(--color-forest-800);
+}
+
+/* Organic animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
