@@ -6,7 +6,7 @@ const navLinks = [
   { to: '/eco-lab', label: 'The Eco-Lab' },
   { to: '/intelligence', label: 'Intelligence' },
   { to: '/living-question', label: 'The Living Question' },
-  { to: '/build-with-us', label: 'Build With Us' },
+  { to: '/build-with-us', label: 'Connect' },
   { to: '/about', label: 'About JP' },
   { to: '/journal', label: 'Journal' },
   { to: '/contact', label: 'Contact' },

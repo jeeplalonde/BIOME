@@ -100,11 +100,11 @@ export function Home() {
           </div>
           <div className="mt-12">
             <Link
-              to="/build-with-us"
+              to="/contact"
               className="inline-flex items-center gap-2 bg-gold-400 text-white px-8 py-3 rounded-lg
                          font-medium no-underline hover:bg-gold-500 transition-colors"
             >
-              Build with us &rarr;
+              Get in touch &rarr;
             </Link>
           </div>
         </div>
