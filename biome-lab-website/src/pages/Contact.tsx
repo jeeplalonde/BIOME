@@ -33,7 +33,7 @@ export function Contact() {
       {/* Hero */}
       <section className="py-24 md:py-32 px-6 bg-forest-700">
         <div className="max-w-4xl mx-auto">
-          <p className="text-gold-400 text-sm font-mono tracking-widest uppercase mb-4">Contact</p>
+          <p className="text-gold-400 text-sm font-mono tracking-widest uppercase mb-4">Connect</p>
           <h1 className="text-4xl md:text-5xl text-white font-light mb-6">Enter the biome.</h1>
         </div>
       </section>

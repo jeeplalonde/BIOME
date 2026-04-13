@@ -1,13 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
-import { EcoLab } from './pages/EcoLab'
-import { Intelligence } from './pages/Intelligence'
-import { LivingQuestion } from './pages/LivingQuestion'
-import { BuildWithUs } from './pages/BuildWithUs'
+import { Wellness } from './pages/Wellness'
+import { Research } from './pages/Research'
 import { About } from './pages/About'
-import { Journal } from './pages/Journal'
 import { Contact } from './pages/Contact'
+import { Journal } from './pages/Journal'
 import { ScrollToTop } from './components/ScrollToTop'
 
 function App() {
@@ -17,13 +15,17 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/eco-lab" element={<EcoLab />} />
-          <Route path="/intelligence" element={<Intelligence />} />
-          <Route path="/living-question" element={<LivingQuestion />} />
-          <Route path="/build-with-us" element={<BuildWithUs />} />
+          <Route path="/wellness" element={<Wellness />} />
+          <Route path="/research" element={<Research />} />
           <Route path="/about" element={<About />} />
-          <Route path="/journal" element={<Journal />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/journal" element={<Journal />} />
+
+          {/* Redirects from old pages */}
+          <Route path="/eco-lab" element={<Navigate to="/research" replace />} />
+          <Route path="/intelligence" element={<Navigate to="/research" replace />} />
+          <Route path="/living-question" element={<Navigate to="/about" replace />} />
+          <Route path="/build-with-us" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
