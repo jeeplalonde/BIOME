@@ -10,8 +10,14 @@ export function LivingQuestion() {
   return (
     <>
       {/* Hero — this page breathes differently */}
-      <section className="py-32 md:py-40 px-6 bg-forest-900">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="relative py-32 md:py-40 px-6 bg-forest-900 overflow-hidden">
+        <img
+          src="/images/lake-moonrise.jpg"
+          alt="Moon rising over the lake with reflections on still water"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-forest-900/60" />
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
           <p className="text-gold-400 text-sm font-mono tracking-widest uppercase mb-6">The Living Question</p>
           <h1 className="text-4xl md:text-5xl text-white font-light leading-tight mb-12">Why we exist.</h1>
           <div className="space-y-6 text-forest-200 text-lg leading-relaxed">
@@ -77,6 +83,16 @@ export function LivingQuestion() {
             Which nature system most aligns with what we are trying to do — and could Nature teach us a better way?
           </blockquote>
         </div>
+      </section>
+
+      {/* Cattails accent — "How does nature heal?" */}
+      <section className="relative h-48 md:h-64 overflow-hidden">
+        <img
+          src="/images/cattails-wetland.jpg"
+          alt="Cattails at the water's edge in BIOME's wetland"
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
       </section>
 
       {/* How This Shows Up */}

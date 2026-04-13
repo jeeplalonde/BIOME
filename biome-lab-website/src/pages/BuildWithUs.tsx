@@ -99,6 +99,14 @@ export function BuildWithUs() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-sm font-mono text-ink-muted tracking-widest uppercase mb-2">Biome Campus</h2>
           <h2 className="text-2xl text-forest-700 mb-8">Immersive Retreats</h2>
+          <div className="rounded-2xl overflow-hidden mb-10">
+            <img
+              src="/images/campfire-hammock.jpg"
+              alt="Campfire with hammock strung between trees in the forest"
+              className="w-full h-64 md:h-80 object-cover object-center"
+              loading="lazy"
+            />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {retreats.map((r) => (
               <div key={r.name} className="bg-white border border-soil-100 rounded-xl p-6 text-center">

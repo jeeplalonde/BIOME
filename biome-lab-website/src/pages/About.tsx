@@ -71,6 +71,16 @@ export function About() {
             </div>
           </div>
 
+          {/* Forest Guardian */}
+          <div className="my-16 rounded-2xl overflow-hidden">
+            <img
+              src="/images/forest-guardian-dog.jpg"
+              alt="BIOME's forest guardian dog on the yurt deck overlooking the property"
+              className="w-full h-64 md:h-80 object-cover object-center"
+              loading="lazy"
+            />
+          </div>
+
           {/* The Turn */}
           <div className="my-16">
             <h3 className="text-xl text-forest-700 mb-6">The Turn</h3>

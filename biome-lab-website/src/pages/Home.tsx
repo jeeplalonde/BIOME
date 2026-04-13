@@ -20,8 +20,14 @@ export function Home() {
     <>
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center bg-forest-900 overflow-hidden">
-        {/* Gradient overlay simulating forest canopy light */}
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-900/90 via-forest-800/70 to-forest-700/50" />
+        {/* Hero background image */}
+        <img
+          src="/images/hero-aerial.jpg"
+          alt="Aerial view of BIOME's lakefront campus surrounded by forest"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-900/70 via-forest-800/50 to-forest-700/40" />
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-gold-400/5 to-transparent" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">

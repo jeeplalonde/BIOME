@@ -51,6 +51,16 @@ export function EcoLab() {
         </div>
       </section>
 
+      {/* Campus Photo */}
+      <section className="relative h-64 md:h-80 overflow-hidden">
+        <img
+          src="/images/eco-lab-yurt-solar.jpg"
+          alt="BIOME eco-lab yurt with solar panels in a forest clearing"
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+      </section>
+
       {/* Two Campuses */}
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
@@ -72,6 +82,16 @@ export function EcoLab() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Property Aerial */}
+      <section className="relative h-64 md:h-96 overflow-hidden">
+        <img
+          src="/images/property-aerial.jpg"
+          alt="Aerial view of BIOME's 12-acre forest property"
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
       </section>
 
       {/* Research Pillars */}

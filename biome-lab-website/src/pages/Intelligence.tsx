@@ -86,6 +86,16 @@ export function Intelligence() {
         </div>
       </section>
 
+      {/* Nature's Intelligence */}
+      <section className="relative h-64 md:h-80 overflow-hidden">
+        <img
+          src="/images/lake-kayak-sunset.jpg"
+          alt="Kayaking through lily pads at sunset on BIOME's lake"
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+      </section>
+
       {/* Closing */}
       <section className="py-24 px-6 bg-forest-50">
         <div className="max-w-3xl mx-auto text-center">
