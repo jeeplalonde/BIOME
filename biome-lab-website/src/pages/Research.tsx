@@ -1,3 +1,5 @@
+import { WaveDivider } from '../components/WaveDivider'
+
 const campuses = [
   {
     name: 'Biome Campus',
@@ -14,59 +16,57 @@ const campuses = [
 ]
 
 const projects = [
-  {
-    title: 'Forest Network',
-    desc: 'Nature-enabled sensors studying ecological patterns across the property. Real-time data on soil, water, air, and canopy health.',
-  },
-  {
-    title: 'Memory Reservoir',
-    desc: 'Sovereign personal data systems. Your memories, your control. Digital archives that belong to you — not a platform.',
-  },
-  {
-    title: 'Research Partnerships',
-    desc: 'Building connections with universities and health organizations to study the measurable effects of forest therapy.',
-  },
+  { icon: '🌐', title: 'Forest Network', desc: 'Nature-enabled sensors studying ecological patterns across the property.' },
+  { icon: '💾', title: 'Memory Reservoir', desc: 'Sovereign personal data systems. Your memories, your control.' },
+  { icon: '🤝', title: 'Research Partnerships', desc: 'Building connections with universities and health organizations.' },
 ]
 
 export function Research() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-32 md:py-40 px-6 bg-forest-800 overflow-hidden">
-        <img
-          src="/images/eco-lab-yurt-solar.jpg"
-          alt="BIOME eco-lab yurt with solar panels in a forest clearing"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+      <section className="relative min-h-[60vh] flex items-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/eco-lab-yurt-solar.jpg')" }}
         />
-        <div className="absolute inset-0 bg-forest-900/60" />
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-gold-400 text-sm font-mono tracking-widest uppercase mb-4">Research</p>
-          <h1 className="text-4xl md:text-5xl text-white font-light mb-6">The Research Centre</h1>
-          <p className="text-forest-200 text-lg max-w-2xl leading-relaxed">
-            Studying how nature heals.
-          </p>
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/80 via-forest-900/60 to-transparent" />
+
+        <div className="relative z-10 px-6 md:px-12 lg:px-20 max-w-3xl">
+          <p className="text-glow-400 font-medium tracking-widest text-sm mb-4">RESEARCH</p>
+          <h1 className="font-serif text-5xl md:text-6xl text-cream-100 text-glow-strong mb-6">
+            The Research Centre
+          </h1>
+          <p className="text-xl text-cream-200/90">Studying how nature heals.</p>
         </div>
       </section>
 
+      <WaveDivider fillColor="#FAF8F3" />
+
       {/* Two Campuses */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-sm font-mono text-ink-muted tracking-widest uppercase mb-12">Two Campuses</h2>
+      <section className="bg-cream-100 py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-serif text-3xl text-forest-900 mb-12">Two Campuses</h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {campuses.map((c) => (
-              <div key={c.name} className="bg-white border border-soil-100 rounded-2xl overflow-hidden">
-                {c.image && (
+              <div key={c.name} className="bg-white rounded-3xl overflow-hidden shadow-lg card-glow">
+                {c.image ? (
                   <img
                     src={c.image}
                     alt={c.imageAlt}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-64 object-cover"
                     loading="lazy"
                   />
+                ) : (
+                  <div className="w-full h-64 bg-gradient-to-br from-forest-700 to-forest-900 flex items-center justify-center">
+                    <span className="text-6xl">🌳</span>
+                  </div>
                 )}
                 <div className="p-8">
-                  <h3 className="text-xl text-forest-700 mb-1">{c.name}</h3>
-                  <p className="text-gold-500 text-sm font-medium mb-4">{c.location}</p>
-                  <p className="text-ink-light leading-relaxed">{c.desc}</p>
+                  <h3 className="font-serif text-2xl text-forest-900 mb-2">{c.name}</h3>
+                  <p className="text-glow-400 text-sm font-medium mb-4">{c.location}</p>
+                  <p className="text-forest-700/90">{c.desc}</p>
                 </div>
               </div>
             ))}
@@ -74,42 +74,44 @@ export function Research() {
         </div>
       </section>
 
+      <WaveDivider fillColor="#0d1f10" flip />
+
       {/* What We're Building */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-sm font-mono text-ink-muted tracking-widest uppercase mb-12">What We're Building</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="bg-forest-900 py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-serif text-3xl text-cream-100 text-glow mb-12">What We're Building</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {projects.map((p) => (
-              <div key={p.title} className="border-t-2 border-forest-300 pt-6">
-                <h3 className="text-lg text-forest-700 mb-3">{p.title}</h3>
-                <p className="text-ink-muted leading-relaxed">{p.desc}</p>
+              <div key={p.title} className="text-center p-6">
+                <div className="w-16 h-16 bg-forest-800 rounded-full flex items-center justify-center mx-auto mb-4 shadow-glow-sm">
+                  <span className="text-3xl">{p.icon}</span>
+                </div>
+                <h3 className="font-serif text-xl text-glow-400 mb-3">{p.title}</h3>
+                <p className="text-cream-200/80 text-sm">{p.desc}</p>
               </div>
             ))}
           </div>
+
+          <img
+            src="/images/cattails-wetland.jpg"
+            alt="Cattails at the water's edge in BIOME's wetland"
+            className="img-organic w-full max-w-3xl mx-auto shadow-lg"
+            loading="lazy"
+          />
         </div>
       </section>
 
-      {/* Cattails accent */}
-      <section className="relative h-48 md:h-64 overflow-hidden">
-        <img
-          src="/images/cattails-wetland.jpg"
-          alt="Cattails at the water's edge in BIOME's wetland"
-          className="w-full h-full object-cover object-center"
-          loading="lazy"
-        />
-      </section>
+      <WaveDivider fillColor="#FAF8F3" />
 
       {/* The Question */}
-      <section className="py-24 px-6 bg-forest-800">
+      <section className="bg-cream-100 py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <blockquote className="text-forest-200 text-lg md:text-xl leading-relaxed italic mb-8">
+          <blockquote className="font-serif text-2xl md:text-3xl text-forest-900 italic leading-relaxed">
             "Which nature system most aligns with what we are trying to do —
             and could Nature teach us a better way?"
           </blockquote>
-          <p className="text-forest-300 leading-relaxed">
-            Every BIOME project begins with this question. We study the patterns of forests, wetlands, and ecosystems —
-            then ask whether nature's solutions can inform how we build systems for human health and wellbeing.
-          </p>
+          <div className="w-16 h-1 bg-glow-400 mx-auto mt-8 rounded-full" />
         </div>
       </section>
     </>
